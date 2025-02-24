@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>番茄鐘</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #3498db; /* 設置藍色背景 */
+            color: white; /* 文字顏色設為白色以便對比 */
+        }
+        #timer {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .inactive {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>番茄鐘</h1>
+    <div id="timer">25:00</div>
+    <button id="startButton" class="inactive" onclick="startTimer()">開始</button>
+    <button id="resetButton" class="inactive" onclick="resetTimer()">重設</button>
+
+    <script>
+        let timer;
+        let minutes = 25;
+        let seconds = 0;
+        let isRunning = false;
+        let isWorkTime = true; // true: 工作時間, false: 休息時間
+
+        function updateTimerDisplay() {
+            let displayMinutes = minutes < 10 ? "0" + minutes : minutes;
+            let displaySeconds = seconds < 10 ? "0" + seconds : seconds;
+            document.getElementById("timer").innerText = `${displayMinutes}:${displaySeconds}`;
+        }
+
+        function startTimer() {
+            if (isRunning) {
+                clearInterval(timer);
+                document.getElementById("startButton").innerText = "開始";
+                document.getElementById("startButton").classList.remove("active
+<!-- partial -->
+  
+</body>
+</html>
