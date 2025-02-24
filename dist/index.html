@@ -19,8 +19,8 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 100px;
-            background-color: #3498db; /* 設置藍色背景 */
-            color: white; /* 文字顏色設為白色以便對比 */
+            background-color: #3498db; /* 藍色背景 */
+            color: white; /* 文字顏色設為白色 */
         }
         #timer {
             font-size: 3em;
@@ -67,7 +67,56 @@
             if (isRunning) {
                 clearInterval(timer);
                 document.getElementById("startButton").innerText = "開始";
-                document.getElementById("startButton").classList.remove("active
+                document.getElementById("startButton").classList.remove("active");
+                document.getElementById("startButton").classList.add("inactive");
+            } else {
+                timer = setInterval(countDown, 1000); // 啟動計時
+                document.getElementById("startButton").innerText = "停止";
+                document.getElementById("startButton").classList.remove("inactive");
+                document.getElementById("startButton").classList.add("active");
+            }
+            isRunning = !isRunning; // 反轉計時器狀態
+        }
+
+        function countDown() {
+            if (seconds === 0) {
+                if (minutes === 0) {
+                    // 番茄鐘結束，進行切換（休息/工作）
+                    if (isWorkTime) {
+                        minutes = 5;
+                        seconds = 0;
+                        isWorkTime = false;
+                        alert("工作時間結束，休息5分鐘！");
+                    } else {
+                        minutes = 25;
+                        seconds = 0;
+                        isWorkTime = true;
+                        alert("休息時間結束，開始工作25分鐘！");
+                    }
+                } else {
+                    minutes--;
+                    seconds = 59;
+                }
+            } else {
+                seconds--;
+            }
+            updateTimerDisplay(); // 更新顯示
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            isRunning = false;
+            isWorkTime = true;
+            minutes = 25;
+            seconds = 0;
+            updateTimerDisplay();
+            document.getElementById("startButton").innerText = "開始";
+            document.getElementById("startButton").classList.remove("active");
+            document.getElementById("startButton").classList.add("inactive");
+        }
+    </script>
+</body>
+</html>
 <!-- partial -->
   
 </body>
